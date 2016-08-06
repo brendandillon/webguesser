@@ -1,18 +1,7 @@
 require 'sinatra'
 require 'sinatra/reloader'
 
-class RandomNumber
-  attr_reader :number
-
-  def generate
-    @number = rand(101)
-  end
-
-end
-
-rn = RandomNumber.new
-rn.generate
-
+number = rand(101)
 get '/' do 
-  "THE SECRET NUMBER IS #{rn.number}"
+  erb :index, :locals => {:number => number}
 end
