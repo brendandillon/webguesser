@@ -1,4 +1,5 @@
 require 'sinatra'
+require 'sinatra/reloader'
 
 class RandomNumber
   attr_reader :number
@@ -13,5 +14,5 @@ rn = RandomNumber.new
 rn.generate
 
 get '/' do 
-  "The secret number is #{rn.number}"
+  "THE SECRET NUMBER IS #{rn.number}"
 end
