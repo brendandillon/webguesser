@@ -5,12 +5,15 @@ SECRET_NUMBER = rand(101)
 
 get '/' do 
   user_guess = params[:guess].to_i
+  @cheat = params[:cheat]
   check_guess(user_guess)
   erb :index, :locals => {:message => @message, :back_color => @color}
 end
 
 def check_guess(user_guess)
-  if user_guess > (SECRET_NUMBER + 5)
+  if @cheat == "true"
+    @message = "The SECRET NUMBER is #{SECRET_NUMBER}"
+  elsif user_guess > (SECRET_NUMBER + 5)
     @message = "Way too high!"
     @color = "f00"
   elsif user_guess > SECRET_NUMBER
